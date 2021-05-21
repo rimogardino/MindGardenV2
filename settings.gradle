@@ -1,0 +1,2 @@
+rootProject.name = "Mind Garden V2"
+include ':app'
