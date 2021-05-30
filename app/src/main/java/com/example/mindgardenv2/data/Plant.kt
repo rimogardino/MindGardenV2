@@ -4,9 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Plant(@PrimaryKey(autoGenerate = true) val plantID: Int, val type: Int = pTypeDefault,
+data class Plant(val type: Int = pTypeDefault,
                  val x:Int, val y:Int, val health: Int = pHealthDefault,
-                 val lifeStage: Int = pLifeStageDefault, val scale: Int) {
+                 val lifeStage: Int = pLifeStageDefault, val scale: Int,
+                 @PrimaryKey(autoGenerate = true) val plantID: Int = 0) {
 
     companion object {
         const val pHealthDefault = 3

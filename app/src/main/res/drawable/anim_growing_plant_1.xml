@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/plant_growing_0001" android:duration="@integer/animation_frame_duration" />
-    <item android:drawable="@drawable/plant_growing_0001" android:duration="@integer/animation_frame_duration" />
     <item android:drawable="@drawable/plant_growing_0002" android:duration="@integer/animation_frame_duration" />
     <item android:drawable="@drawable/plant_growing_0003" android:duration="@integer/animation_frame_duration" />
     <item android:drawable="@drawable/plant_growing_0004" android:duration="@integer/animation_frame_duration" />
