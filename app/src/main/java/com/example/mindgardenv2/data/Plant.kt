@@ -1,4 +1,20 @@
 package com.example.mindgardenv2.data
 
-data class Plant(val type: Int = 0, val x:Int, val y:Int) {
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class Plant(@PrimaryKey(autoGenerate = true) val plantID: Int, val type: Int = pTypeDefault,
+                 val x:Int, val y:Int, val health: Int = pHealthDefault,
+                 val lifeStage: Int = pLifeStageDefault, val scale: Int) {
+
+    companion object {
+        const val pHealthDefault = 3
+        val pHealthStates = arrayOf(0,1,2,3)
+        const val pLifeStageDefault = 0
+        val pLifeStages = arrayOf(0,1,2)
+
+        const val pTypeDefault = 0
+        val pTypes = arrayOf(0,1,2,3)
+    }
 }
