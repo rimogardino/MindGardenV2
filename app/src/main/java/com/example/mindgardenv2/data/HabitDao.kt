@@ -15,7 +15,7 @@ interface HabitDao {
     @Update
     fun updateHabit(habit: Habit)
 
-    @Query("SELECT * FROM habit")
+    @Query("SELECT * FROM habit_table")
     fun getAllHabits() : Flow<List<Habit>>
 
 }

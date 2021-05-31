@@ -16,6 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/grass_field_vertical_layout" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_garden"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/rv_habits"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_habits"

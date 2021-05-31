@@ -9,18 +9,17 @@ interface PlantDao {
     // try suspend to see if it actually makes a difference
     // i mean if it is not actually being suspended
     @Insert
-    fun insertPlant(plant: Plant)
+    suspend fun insertPlant(plant: Plant)
 
     @Delete
-    fun deletePlant(plant: Plant)
+    suspend fun deletePlant(plant: Plant)
 
     @Update
-    fun updatePlant(plant: Plant)
-    // My db table is not called plant apperantly
-    @Query("SELECT plantID FROM plant")
-    fun getPlantByID(plant: Plant) : Plant
+    suspend fun updatePlant(plant: Plant)
 
-    @Query("SELECT * FROM plant")
+
+
+    @Query("SELECT * FROM plant_table")
     fun getAllPlants() : Flow<List<Plant>>
 
 }
