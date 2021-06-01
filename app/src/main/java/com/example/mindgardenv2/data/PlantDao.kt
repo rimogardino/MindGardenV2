@@ -18,6 +18,8 @@ interface PlantDao {
     suspend fun updatePlant(plant: Plant)
 
 
+//    @Query("SELECT :plantID FROM plant_table")
+//    fun getPlantByID(plantID: Int) : Plant
 
     @Query("SELECT * FROM plant_table")
     fun getAllPlants() : Flow<List<Plant>>

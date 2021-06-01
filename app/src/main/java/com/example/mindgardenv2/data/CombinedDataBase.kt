@@ -27,10 +27,10 @@ abstract class CombinedDataBase : RoomDatabase() {
                         val habitDao = mainDatabase.get().habitDao()
 
                         applicationScope.launch {
-//                                plantDao.insertPlant(Plant(x = 300, y = 300, scale = 1))
-//                                plantDao.insertPlant(Plant(x = 400, y = 600, scale = 1))
-//                                plantDao.insertPlant(Plant(x = 500, y = 500, scale = 1))
-//                                plantDao.insertPlant(Plant(x = 600, y = 400, scale = 1))
+                                plantDao.insertPlant(Plant(x = 300, y = 300, scale = 1))
+                                plantDao.insertPlant(Plant(x = 400, y = 600, scale = 1))
+                                plantDao.insertPlant(Plant(x = 500, y = 500, scale = 1))
+                                plantDao.insertPlant(Plant(x = 600, y = 400, scale = 1))
 
                                 habitDao.insertHabit(Habit(text = "blabla"))
                                 habitDao.insertHabit(Habit(text = "get high"))
