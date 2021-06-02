@@ -8,18 +8,47 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mindgardenv2.data.Habit
 import com.example.mindgardenv2.databinding.HabitCheckboxBinding
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.count
+import kotlinx.android.synthetic.main.habit_checkbox.view.*
 
-class HabitAdapter : ListAdapter<Habit, HabitAdapter.HabitViewHolder>(DiffCallback()) {
 
-    class HabitViewHolder(private val binding: HabitCheckboxBinding) : RecyclerView.ViewHolder(binding.root) {
+class HabitAdapter(private val listener: OnItemClickListener) : ListAdapter<Habit, HabitAdapter.HabitViewHolder>(DiffCallback()) {
+
+    inner class HabitViewHolder(private val binding: HabitCheckboxBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.apply {
+
+                root.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val habit = getItem(position)
+                        listener.onItemClick(habit)
+                    }
+                }
+
+                checkBox.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val habit = getItem(position)
+
+                        listener.onCheckboxClick(habit, it.checkBox.isChecked)
+                    }
+                }
+            }
+        }
 
         fun bind(habit: Habit) {
             binding.apply {
-                this.checkBox.text = habit.text
+                checkBox.text = habit.text
+                checkBox.isChecked = habit.checked
             }
         }
+
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(habit: Habit)
+        fun onCheckboxClick(habit: Habit, isChecked: Boolean)
 
     }
 

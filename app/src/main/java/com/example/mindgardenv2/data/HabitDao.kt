@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.Flow
 interface HabitDao {
 
     @Insert
-    fun insertHabit(habit: Habit)
+    suspend fun insertHabit(habit: Habit)
 
     @Delete
-    fun deleteHabit(habit: Habit)
+    suspend fun deleteHabit(habit: Habit)
 
     @Update
-    fun updateHabit(habit: Habit)
+    suspend fun updateHabit(habit: Habit)
 
     @Query("SELECT * FROM habit_table")
     fun getAllHabits() : Flow<List<Habit>>

@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.the_garden.*
 
 @AndroidEntryPoint
-class TheGardenFragment : Fragment(R.layout.the_garden) {
+class TheGardenFragment : Fragment(R.layout.the_garden), HabitAdapter.OnItemClickListener {
 
     private val plantViewModel: PlantViewModel by viewModels()
     private val habitViewModel: HabitViewModel by viewModels()
@@ -31,8 +31,8 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
         super.onViewCreated(view, savedInstanceState)
 
         // Habit stuff
-        val allHabits = habitViewModel.habits
-        val habitAdapter = HabitAdapter()
+
+        val habitAdapter = HabitAdapter(this)
 
         rv_habits.apply {
             adapter = habitAdapter
@@ -40,6 +40,7 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
             setHasFixedSize(true)
         }
 
+        val allHabits = habitViewModel.habits
         allHabits.observe(viewLifecycleOwner) {
             habitAdapter.submitList(it)
         }
@@ -60,7 +61,13 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
 
     }
 
+    override fun onItemClick(habit: Habit) {
+        habitViewModel.onItemSelected(habit)
+    }
 
+    override fun onCheckboxClick(habit: Habit, isChecked: Boolean) {
+        habitViewModel.onCheckboxSelected(habit, isChecked)
+    }
 
     private fun showPlant(plant: Plant) {
         val testImageView = ImageView(requireContext())
