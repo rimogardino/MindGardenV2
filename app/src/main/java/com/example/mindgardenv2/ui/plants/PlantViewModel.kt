@@ -1,4 +1,4 @@
-package com.example.mindgardenv2.ui
+package com.example.mindgardenv2.ui.plants
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

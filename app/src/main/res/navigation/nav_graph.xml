@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/theGardenFragment"
-        android:name="com.example.mindgardenv2.ui.TheGardenFragment"
+        android:name="com.example.mindgardenv2.ui.TheMainFragment"
         android:label="TheGardenFragment"
-        tools:layout="@layout/the_garden"
+        tools:layout="@layout/the_main_layout"
         />
 </navigation>
