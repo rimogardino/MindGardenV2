@@ -33,7 +33,7 @@ abstract class CombinedDataBase : RoomDatabase() {
                                 plantDao.insertPlant(Plant(x = 600, y = 400, scale = 1))
 
                                 habitDao.insertHabit(Habit(text = "blabla"))
-                                habitDao.insertHabit(Habit(text = "get high"))
+                                habitDao.insertHabit(Habit(text = "get high",type = Habit.typeTimer))
                         }
 
                 }

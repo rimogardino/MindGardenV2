@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Mind Garden V2</string>
     <string name="add_new_habit">Add new habit</string>
+    <string name="start">Start</string>
     <integer name="animation_frame_duration">30</integer>
+
+    <string-array name="spinner_time_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
 </resources>
