@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_new_habit"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:spinnerMode="dialog"
         android:entries="@array/spinner_time_array"
+        android:backgroundTint="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/button_start_pause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view"

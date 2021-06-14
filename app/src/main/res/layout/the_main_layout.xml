@@ -48,6 +48,7 @@
         android:layout_margin="8dp"
         android:contentDescription="@string/add_new_habit"
         android:src="@drawable/ic_baseline_control_point_24"
+        android:onClick="showAddHabit"
 
         />
 

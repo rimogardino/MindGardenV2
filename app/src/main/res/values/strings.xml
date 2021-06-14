@@ -16,5 +16,13 @@
         <item>9</item>
         <item>10</item>
     </string-array>
+    <!--  Add habit dialog  -->
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="habit_name">Habit name</string>
+    <string name="habit_type">Habit type</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="timer">Timer</string>
+    <string name="habit_type_button">habit type button</string>
 
 </resources>

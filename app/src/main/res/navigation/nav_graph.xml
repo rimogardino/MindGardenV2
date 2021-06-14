@@ -10,5 +10,14 @@
         android:name="com.example.mindgardenv2.ui.TheMainFragment"
         android:label="TheGardenFragment"
         tools:layout="@layout/the_main_layout"
-        />
+        >
+        <action
+            android:id="@+id/action_theGardenFragment_to_addHabitFragment"
+            app:destination="@id/addHabitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addHabitFragment"
+        android:name="com.example.mindgardenv2.ui.habits.AddHabitFragment"
+        android:label="fragment_add_habit"
+        tools:layout="@layout/add_habit_fragment" />
 </navigation>

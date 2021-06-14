@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mindgardenv2.R
 import com.example.mindgardenv2.data.Habit
 import com.example.mindgardenv2.data.Plant
+import com.example.mindgardenv2.ui.habits.AddHabitFragment
 import com.example.mindgardenv2.ui.habits.HabitAdapter
 import com.example.mindgardenv2.ui.habits.HabitRecyclerViewFragment
 import com.example.mindgardenv2.ui.habits.HabitViewModel

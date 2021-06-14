@@ -51,6 +51,8 @@ class HabitAdapter(
                 checkBox.text = habit.text
                 checkBox.isChecked = habit.checked
             }
+
+
         }
     }
 

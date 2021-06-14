@@ -17,8 +17,15 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
         habitDao.updateHabit(habit)
     }
 
-
     fun onCheckboxSelected(habit: Habit, isChecked: Boolean) = viewModelScope.launch {
         habitDao.updateHabit(habit.copy(checked = isChecked))
+    }
+
+    fun addNewHabit(habit: Habit) = viewModelScope.launch {
+        habitDao.insertHabit(habit)
+    }
+
+    fun onHabitSwiped(habit: Habit) = viewModelScope.launch {
+        habitDao.deleteHabit(habit)
     }
 }
