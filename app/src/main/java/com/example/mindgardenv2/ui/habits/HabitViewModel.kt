@@ -3,8 +3,8 @@ package com.example.mindgardenv2.ui.habits
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.mindgardenv2.data.Habit
-import com.example.mindgardenv2.data.HabitDao
+import com.example.mindgardenv2.data.habits.Habit
+import com.example.mindgardenv2.data.habits.HabitDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

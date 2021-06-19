@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mindgardenv2.R
-import com.example.mindgardenv2.data.Habit
+import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.databinding.HabitRecyclerViewFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 

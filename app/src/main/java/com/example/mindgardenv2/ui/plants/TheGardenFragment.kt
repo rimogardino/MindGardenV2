@@ -10,16 +10,13 @@ import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import com.example.mindgardenv2.R
-import com.example.mindgardenv2.data.Plant
-import com.example.mindgardenv2.di.ApplicationScope
+import com.example.mindgardenv2.data.plants.Plant
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.the_garden.*
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

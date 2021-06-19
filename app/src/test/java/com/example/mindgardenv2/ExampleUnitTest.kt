@@ -1,5 +1,7 @@
 package com.example.mindgardenv2
 
+import android.util.Log
+import com.example.mindgardenv2.utils.isNewSession
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +15,11 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+
+    @Test
+    fun newSeesionWorks() {
+        isNewSession()
+        println("${isNewSession()}")
     }
 }

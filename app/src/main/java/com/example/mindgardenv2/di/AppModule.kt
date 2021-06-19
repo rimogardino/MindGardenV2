@@ -2,14 +2,12 @@ package com.example.mindgardenv2.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.mindgardenv2.MindGardenApplication
 import com.example.mindgardenv2.data.CombinedDataBase
-import com.example.mindgardenv2.data.HabitDao
-import com.example.mindgardenv2.data.PlantDao
+import com.example.mindgardenv2.data.habits.HabitDao
+import com.example.mindgardenv2.data.plants.PlantDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

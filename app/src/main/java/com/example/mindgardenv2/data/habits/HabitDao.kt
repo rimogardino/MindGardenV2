@@ -1,4 +1,4 @@
-package com.example.mindgardenv2.data
+package com.example.mindgardenv2.data.habits
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

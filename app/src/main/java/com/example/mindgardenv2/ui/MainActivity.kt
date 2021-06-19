@@ -3,13 +3,9 @@ package com.example.mindgardenv2.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import com.example.mindgardenv2.R
-import com.example.mindgardenv2.data.Habit
 import com.example.mindgardenv2.ui.habits.AddHabitFragment
-import com.example.mindgardenv2.ui.habits.HabitViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.add_habit_fragment.view.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

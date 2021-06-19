@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.example.mindgardenv2.data.Habit
+import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.databinding.HabitCheckboxBinding
 import com.example.mindgardenv2.databinding.HabitTimerBinding
 import kotlinx.android.synthetic.main.habit_checkbox.view.*

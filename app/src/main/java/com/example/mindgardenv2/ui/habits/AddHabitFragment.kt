@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.mindgardenv2.R
-import com.example.mindgardenv2.data.Habit
+import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.databinding.AddHabitFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
