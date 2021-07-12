@@ -1,8 +1,10 @@
 package com.example.mindgardenv2.ui.habits
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -19,6 +21,8 @@ class HabitRecyclerViewFragment :
     HabitAdapter.OnItemClickListenerCheckbox, HabitAdapter.OnItemClickListenerTimer {
 
     private val habitViewModel: HabitViewModel by viewModels()
+    //private val gardenWorker : GardenWorker by inject()
+    //private val gardenWorker: GardenWorker by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,17 +62,21 @@ class HabitRecyclerViewFragment :
 
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onItemClick(habit: Habit) {
         habitViewModel.onItemSelected(habit)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCheckboxClick(habit: Habit, isChecked: Boolean) {
         habitViewModel.onCheckboxSelected(habit, isChecked)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onButtonClick(habit: Habit) {
         Log.d(TAG, "Button clicked")
+        // temporary fortesting
+        habitViewModel.onCheckboxSelected(habit, !habit.checked)
     }
 
     companion object {

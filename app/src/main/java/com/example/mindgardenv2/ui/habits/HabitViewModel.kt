@@ -12,6 +12,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewModel() {
     val habits = habitDao.getAllHabits().asLiveData()
+    suspend fun synchronousHabits() = habitDao.getAllHabitsSynchronous()
+
 
     fun onItemSelected(habit: Habit) = viewModelScope.launch {
         habitDao.updateHabit(habit)

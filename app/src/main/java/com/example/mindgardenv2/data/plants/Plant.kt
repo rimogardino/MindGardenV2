@@ -11,9 +11,9 @@ data class Plant(
     val type: Int = pTypeDefault,
     val x: Int = 0,
     val y: Int = 0,
-    val health: Int = pHealthMax,
-    val lifeStage: Int = pLifeStageStart,
-    val scale: Int = 1,
+    var health: Int = pHealthMax,
+    var lifeStage: Int = pLifeStageStart,
+    val scale: Float = 1.0f,
     @PrimaryKey(autoGenerate = true) val plantID: Int = 0
 ) : Parcelable {
 

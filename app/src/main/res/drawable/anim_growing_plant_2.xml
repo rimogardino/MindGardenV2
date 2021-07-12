@@ -18,7 +18,22 @@
     <item android:drawable="@drawable/plant_growing_0014" android:duration="@integer/animation_frame_duration" />
     <item android:drawable="@drawable/plant_growing_0015" android:duration="@integer/animation_frame_duration" />
     <item android:drawable="@drawable/plant_growing_0016" android:duration="@integer/animation_frame_duration" />
-
+    <item android:drawable="@drawable/plant_growing_0017" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0018" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0019" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0020" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0021" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0022" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0023" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0024" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0025" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0026" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0027" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0028" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0029" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0030" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0031" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0032" android:duration="@integer/animation_frame_duration" />
 
 
 

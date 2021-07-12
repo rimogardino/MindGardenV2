@@ -27,7 +27,7 @@ abstract class CombinedDataBase : RoomDatabase() {
 
         abstract fun plantDao() : PlantDao
         abstract fun habitDao() : HabitDao
-        abstract fun sessionDao() :SessionDao
+        abstract fun sessionDao() : SessionDao
 
         class InitCallBack @Inject constructor(
                 private val mainDatabase: Provider<CombinedDataBase>,
@@ -42,15 +42,26 @@ abstract class CombinedDataBase : RoomDatabase() {
                         val sessionDao = mainDatabase.get().sessionDao()
 
                         applicationScope.launch {
-                                plantDao.insertPlant(Plant(x = 300, y = 300, scale = 1))
-                                plantDao.insertPlant(Plant(x = 400, y = 600, scale = 1))
-                                plantDao.insertPlant(Plant(x = 500, y = 500, scale = 1))
-                                plantDao.insertPlant(Plant(x = 600, y = 400, scale = 1))
+                                sessionDao.insertSession(Session(LocalDate.parse("2021-06-28"),
+                                        latestSession = false))
+                                sessionDao.insertSession(Session(LocalDate.parse("2021-07-01"),
+                                        latestSession = true))
+
+                                plantDao.insertPlant(Plant(x = 300, y = 300,
+                                        scale = 1f, lifeStage = Plant.pLifeStageStart))
+                                plantDao.insertPlant(Plant(x = 400, y = 600,
+                                        scale = 1f, lifeStage = Plant.pLifeStageStart))
+                                plantDao.insertPlant(Plant(x = 500, y = 500,
+                                        scale = 1f, lifeStage = Plant.pLifeStageGrown))
+                                plantDao.insertPlant(Plant(x = 600, y = 400,
+                                        scale = 1f, lifeStage = Plant.pLifeStageGrown))
 
                                 habitDao.insertHabit(Habit(text = "blabla"))
+                                habitDao.insertHabit(Habit(text = "blabla 2"))
+                                habitDao.insertHabit(Habit(text = "blabla 3"))
                                 habitDao.insertHabit(Habit(text = "get high",type = Habit.typeTimer))
 
-                                sessionDao.insertSession(Session(LocalDate.parse("2021-06-19")))
+
                         }
 
                 }

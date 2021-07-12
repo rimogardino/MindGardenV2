@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.mindgardenv2.data.CombinedDataBase
 import com.example.mindgardenv2.data.habits.HabitDao
 import com.example.mindgardenv2.data.plants.PlantDao
+import com.example.mindgardenv2.data.session.SessionDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,10 +35,14 @@ object AppModule {
     @Provides
     fun provideHabitDao(db: CombinedDataBase) : HabitDao = db.habitDao()
 
+    @Provides
+    fun provideSessionDao(db: CombinedDataBase) : SessionDao = db.sessionDao()
+
     @ApplicationScope
     @Provides
     @Singleton
     fun provideApplicationScope() = CoroutineScope(SupervisorJob())
+
 
 }
 

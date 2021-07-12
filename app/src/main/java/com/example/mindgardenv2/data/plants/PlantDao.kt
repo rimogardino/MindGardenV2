@@ -1,5 +1,6 @@
 package com.example.mindgardenv2.data.plants
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -17,15 +18,18 @@ interface PlantDao {
 
 
     @Query("SELECT * FROM plant_table WHERE plantID = :plantID")
-    fun getPlantByID(plantID: Int) : Plant
+    fun getPlantByID(plantID: Int): Plant
 
     @Query("SELECT * FROM plant_table")
-    fun getAllPlants() : Flow<List<Plant>>
+    fun getAllPlants(): LiveData<List<Plant>>
+
+    @Query("SELECT * FROM plant_table")
+    suspend fun getAllPlantsSynchronous(): List<Plant>
 
     @Query("SELECT * FROM plant_table WHERE health < ${Plant.pHealthMax}")
-    fun getAllDegradedPlants() : List<Plant>
+    suspend fun getAllDegradedPlants(): List<Plant>
 
     @Query("SELECT * FROM plant_table WHERE lifeStage < ${Plant.pLifeStageGrown}")
-    fun getAllYoungPlants() : List<Plant>
+    suspend fun getAllYoungPlants(): List<Plant>
 
 }

@@ -8,13 +8,15 @@ import java.time.LocalDate
 
 @Entity(tableName = "session_table")
 @Parcelize
-data class Session(@PrimaryKey val date: LocalDate, val latestSession: Boolean = false,
-                   val completeness: Int = 0, val checkPoint_1: Boolean = false,
-                   val checkPoint_2: Boolean = false) :
+data class Session(@PrimaryKey val date: LocalDate, var latestSession: Boolean = false,
+                   var streak: Int = 0,
+                   var completeness: Int = 0, var checkPoint_1: Boolean = false,
+                   var checkPoint_2: Boolean = false, var checkPoint_3: Boolean = false) :
     Parcelable {
 
     companion object {
-        const val checkPoint_1_threshHold = 70
-        const val checkPoint_2_threshHold = 100
+        const val checkPoint_1_threshHold = 1
+        const val checkPoint_2_threshHold = 50
+        const val checkPoint_3_threshHold = 100
     }
 }
