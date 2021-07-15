@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "habit_table")
 @Parcelize
 data class Habit(@PrimaryKey(autoGenerate = true) val habitID: Int = 0, val type: Int = typeCheckbox, val text: String,
-                 var time: Int = 8, var checked: Boolean = false) : Parcelable {
+                 var time: Int = 8, var checked: Boolean = false, var runningTime : Int = 0) : Parcelable {
 
     companion object {
         const val typeTimer = 15

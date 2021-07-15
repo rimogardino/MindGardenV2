@@ -1,5 +1,6 @@
 package com.example.mindgardenv2.data.habits
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -16,7 +17,7 @@ interface HabitDao {
     suspend fun updateHabit(habit: Habit)
 
     @Query("SELECT * FROM habit_table")
-    fun getAllHabits() : Flow<List<Habit>>
+    fun getAllHabits() : LiveData<List<Habit>>
 
     @Query("SELECT * FROM habit_table")
     suspend fun getAllHabitsSynchronous() : List<Habit>

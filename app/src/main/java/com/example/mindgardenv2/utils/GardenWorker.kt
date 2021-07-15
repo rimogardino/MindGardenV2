@@ -159,7 +159,7 @@ class GardenWorker @Inject constructor(
         var nOfHabits = 0
         var nCompletedHabits = 0
 
-        val allHabits = habitDao.getAllHabits().asLiveData()
+        val allHabits = habitDao.getAllHabits()
         allHabits.observeForever { currentHabits ->
             nOfHabits = 0
             nCompletedHabits = 0

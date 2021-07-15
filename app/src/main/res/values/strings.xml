@@ -24,5 +24,7 @@
     <string name="checkbox">Checkbox</string>
     <string name="timer">Timer</string>
     <string name="habit_type_button">habit type button</string>
+    <string name="minutes">minutes</string>
+    <string name="length_for_this_task">Length for this task.</string>
 
 </resources>
