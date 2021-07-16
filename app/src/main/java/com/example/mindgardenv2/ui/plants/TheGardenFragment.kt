@@ -26,13 +26,16 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
     //private val sessionViewModel: SessionViewModel by viewModels()
     private val plantViewModel: PlantViewModel by viewModels()
     private val gardenWorker: GardenWorker by viewModels()
-    private var staticAllPlants = listOf<List<Plant>>()
+    private var staticAllPlants = mapOf<Int, Plant>()
+    private var staticAllPlantsssd = listOf<List<Plant>>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         CoroutineScope(lifecycleScope.coroutineContext).launch {
-            staticAllPlants = plantViewModel.plants.asFlow().toList()
+            staticAllPlants = plantViewModel.plants.asFlow().toList().map {
+                it.map { plant -> plant.plantID to plant }.toMap()
+            }[0]
         }
 
         showAllPlants()
@@ -48,21 +51,32 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
         allPlants.observe(viewLifecycleOwner) {
             CoroutineScope(lifecycleScope.coroutineContext).launch {
                 for (plant in it) {
+
                     if (staticAllPlants.isEmpty()) {
                         showPlant(plant)
-                    } else if (!staticAllPlants[0].contains(plant)) {
+                    } else if (!staticAllPlants.keys.contains(plant.plantID)) {
                         showPlant(plant)
+                    } else if (cl_garden.findViewById<ImageView>(plant.plantID) != null) {
+                        // if we are already showing this plant update it's state / animation
+                        val shownPlant = staticAllPlants[plant.plantID]
+                        if (shownPlant?.lifeStage != plant.lifeStage) {
+                            val changeInStage =
+                                if (shownPlant!!.lifeStage > plant.lifeStage) -1 else 1
+                            showPlant(plant, changeInStage)
+                        }
                     }
                 }
-                if (staticAllPlants.isNotEmpty() && staticAllPlants[0].size > it.size) {
-                    for (plant in staticAllPlants[0]) {
-                        if (!it.contains(plant))  {
-                            hidePlant(plant)
+                if (staticAllPlants.isNotEmpty() && staticAllPlants.size > it.size) {
+                    val newPlantIDs = it.map { it.plantID }
+                    for (plantID in staticAllPlants.keys) {
+                        if (!newPlantIDs.contains(plantID)) {
+                            hidePlantID(plantID)
                         }
                     }
                 }
 
-                staticAllPlants = listOf(it)
+                staticAllPlants = it.map { it.plantID to it }.toMap()
+                Log.d(TAG, "staticAllPlants $staticAllPlants")
             }
         }
 
@@ -77,14 +91,20 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
 
     }
 
+    private fun hidePlantID(plantID: Int) {
+        Log.d(TAG, "hiding plant id $plantID")
+        cl_garden.removeView(cl_garden.getViewById(plantID))
+    }
 
-    private suspend fun hidePlant(plant: Plant) {
+    private fun hidePlant(plant: Plant) {
         Log.d(TAG, "hiding plant id ${plant.plantID}")
         cl_garden.removeView(cl_garden.getViewById(plant.plantID))
     }
 
-
-    private suspend fun showPlant(plant: Plant) {
+    /**
+    changeInStage can be -1 if degrading, 1 if upgrading and 0 if no change
+     */
+    private suspend fun showPlant(plant: Plant, changeInStage: Int = 0) {
         hidePlant(plant)
         Log.d(TAG, "showing plant $plant")
         val testImageView = ImageView(requireContext())
@@ -95,16 +115,32 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
         )
 
         testImageView.tag = "clickbleImage"
+
         testImageView.id = plant.plantID
 
         // these are the same for now
-        val animations = listOf(
-            R.drawable.anim_growing_plant_1,
-            R.drawable.anim_growing_plant_2,
-            R.drawable.anim_growing_plant_3
-        )
+        val animations = when (changeInStage) {
+            1 -> listOf(
+                R.drawable.anim_growing_plant_1,
+                R.drawable.anim_growing_plant_1_2,
+                R.drawable.anim_growing_plant_2_3
+            )
+            -1 -> listOf(
+                R.drawable.anim_degrading_plant_1_0,
+                R.drawable.anim_degrading_plant_2_1,
+                R.drawable.anim_degrading_plant_3_2
+            )
+            else -> listOf(
+                R.drawable.anim_growing_plant_1,
+                R.drawable.anim_growing_plant_2,
+                R.drawable.anim_growing_plant_3
+            )
 
-        testImageView.setBackgroundResource( animations[plant.lifeStage] )
+        }
+
+
+
+        testImageView.setBackgroundResource(animations[plant.lifeStage])
 
         val animationGrowing: AnimationDrawable = testImageView.background as AnimationDrawable
 

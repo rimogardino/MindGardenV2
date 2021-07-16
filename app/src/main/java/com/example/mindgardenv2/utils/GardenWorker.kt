@@ -4,7 +4,6 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.mindgardenv2.data.habits.HabitDao
 import com.example.mindgardenv2.data.plants.Plant
@@ -91,12 +90,12 @@ class GardenWorker @Inject constructor(
                 Log.d(TAG, "waterTheGarden newPlant $newPlant?")
                 plantDao.insertPlant(newPlant)
             } else if (degradedPlantsCount > 0) {
-                val chosenPlant = degradedPlants[ 0.until(degradedPlantsCount).random() ]
+                val chosenPlant = degradedPlants[0.until(degradedPlantsCount).random()]
                 chosenPlant.health += 1
                 plantDao.updatePlant(chosenPlant)
             } else if (youngPlantsCount > 0) {
                 Log.d(TAG, "waterTheGarden newPlant $youngPlants?")
-                val chosenPlant = youngPlants[ 0.until(youngPlantsCount).random()]
+                val chosenPlant = youngPlants[0.until(youngPlantsCount).random()]
                 chosenPlant.lifeStage += 1
                 plantDao.updatePlant(chosenPlant)
             }
@@ -111,7 +110,7 @@ class GardenWorker @Inject constructor(
         Log.d(TAG, "degrade plant")
 
         val allPlants = plantDao.getAllPlantsSynchronous()
-        val chosenPlant = allPlants[(0..allPlants.size).random()]
+        val chosenPlant = allPlants[(0.until(allPlants.size)).random()]
         val degradedHealth = chosenPlant.health - 1
         chosenPlant.health = degradedHealth
         Log.d(TAG, "degrade plant $chosenPlant")

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:drawable="@drawable/plant_growing_0048" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0047" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0046" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0045" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0044" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0043" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0042" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0041" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0040" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0039" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0038" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0037" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0036" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0035" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0034" android:duration="@integer/animation_frame_duration" />
+    <item android:drawable="@drawable/plant_growing_0033" android:duration="@integer/animation_frame_duration" />
+
+
+</animation-list>
