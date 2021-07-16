@@ -23,11 +23,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class TheGardenFragment : Fragment(R.layout.the_garden) {
     // not sure about passing through all the viewModels
-    //private val sessionViewModel: SessionViewModel by viewModels()
     private val plantViewModel: PlantViewModel by viewModels()
     private val gardenWorker: GardenWorker by viewModels()
     private var staticAllPlants = mapOf<Int, Plant>()
-    private var staticAllPlantsssd = listOf<List<Plant>>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,8 +42,6 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
 
 
     private fun showAllPlants() {
-        // when a plant is updated it replaces it in the data base and the ID changes so it shows it in the same place again
-        // Plants
         val allPlants = plantViewModel.plants
 
         allPlants.observe(viewLifecycleOwner) {
@@ -79,16 +75,6 @@ class TheGardenFragment : Fragment(R.layout.the_garden) {
                 Log.d(TAG, "staticAllPlants $staticAllPlants")
             }
         }
-
-
-//        allPlants.observe(viewLifecycleOwner) {
-//            for (plant in it) {
-//                CoroutineScope(lifecycleScope.coroutineContext).launch {
-//                    showPlant(plant)
-//                }
-//            }
-//        }
-
     }
 
     private fun hidePlantID(plantID: Int) {

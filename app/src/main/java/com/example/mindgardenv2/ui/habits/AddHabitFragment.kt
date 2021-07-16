@@ -10,6 +10,7 @@ import com.example.mindgardenv2.R
 import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.databinding.AddHabitFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.add_habit_fragment.*
 
 @AndroidEntryPoint
 class AddHabitFragment : DialogFragment() {
@@ -19,6 +20,8 @@ class AddHabitFragment : DialogFragment() {
             val builder = AlertDialog.Builder(it)
 
             val binding = AddHabitFragmentBinding.inflate(LayoutInflater.from(context))
+            binding.tbHabitRepeating.isChecked = true
+
             builder.setView(binding.root)
                 // Add action buttons
                 .setPositiveButton(
@@ -28,7 +31,9 @@ class AddHabitFragment : DialogFragment() {
                     if (newHabitText.isNotEmpty()) {
                         val habitType =
                             if (binding.tbHabitType.isChecked) Habit.typeTimer else Habit.typeCheckbox
-                        val newHabit = Habit(text = newHabitText, type = habitType)
+                        val newHabit = Habit(text = newHabitText, type = habitType,
+                            repeating = binding.tbHabitRepeating.isChecked)
+
                         habitViewModel.addNewHabit(newHabit)
                     }
                 }

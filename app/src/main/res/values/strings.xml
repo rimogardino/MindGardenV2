@@ -26,5 +26,8 @@
     <string name="habit_type_button">habit type button</string>
     <string name="minutes">minutes</string>
     <string name="length_for_this_task">Length for this task.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="recurring">Recurring</string>
 
 </resources>
