@@ -14,7 +14,7 @@ import com.example.mindgardenv2.data.plants.PlantDao
 import com.example.mindgardenv2.data.session.Session
 import com.example.mindgardenv2.data.session.SessionDao
 import com.example.mindgardenv2.di.ApplicationScope
-import com.example.mindgardenv2.utils.DBconverters
+import com.example.mindgardenv2.utils.DbConverters
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -22,7 +22,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 @Database(entities = [Plant::class, Habit::class, Session::class], version = 1)
-@TypeConverters(DBconverters::class)
+@TypeConverters(DbConverters::class)
 abstract class CombinedDataBase : RoomDatabase() {
 
         abstract fun plantDao() : PlantDao

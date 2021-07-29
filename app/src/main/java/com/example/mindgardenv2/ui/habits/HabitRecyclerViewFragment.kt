@@ -17,11 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HabitRecyclerViewFragment :
     Fragment(R.layout.habit_recycler_view_fragment),
     HabitAdapter.OnItemClickListenerCheckbox, HabitAdapter.OnItemClickListenerTimer {
-
-
     private val habitViewModel: HabitViewModel by viewModels()
-    //private val gardenWorker : GardenWorker by inject()
-    //private val gardenWorker: GardenWorker by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

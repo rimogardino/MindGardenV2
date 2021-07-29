@@ -24,17 +24,13 @@ class GardenWorker @Inject constructor(
     private val sessionDao: SessionDao
 ) : ViewModel() {
 
-
-    // can/should this be a viewModel?
-    // I think I could use Calender in order to support every version, but do I care?
+    // I think I could use Calender in order to support every android version, but do I care?
     private val today = LocalDate.now()
     private var currentSession: Session = Session(date = today, latestSession = true)
 
 
     init {
-        Log.d(TAG, "when does the garden worker get inited? Now I guess")
         var isNewSession = true
-
 
         viewModelScope.launch {
             val latestSessions = sessionDao.getLatestSession()
@@ -57,9 +53,6 @@ class GardenWorker @Inject constructor(
                 launch {
                     if (currentSession.streak == 0) degradeTheGarden()
                 }
-
-
-
 
                 Log.d(TAG, "isNewSession $isNewSession and currentSession $currentSession")
                 sessionDao.insertSession(currentSession)
@@ -100,9 +93,7 @@ class GardenWorker @Inject constructor(
                 plantDao.updatePlant(chosenPlant)
             }
 
-
         }
-
 
     }
 
@@ -147,10 +138,6 @@ class GardenWorker @Inject constructor(
         }
     }
 
-    fun nOfPlantsToUpdate(): Int {
-        // some kind of function to evaluate how much reward / punishment should be given
-        return 42
-    }
 
     private suspend fun updateCompleteness() {
         // get a percentage of how complete the tasks are

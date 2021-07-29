@@ -9,7 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-//    private val habitViewModel: HabitViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +19,5 @@ class MainActivity : AppCompatActivity() {
         val dialog = AddHabitFragment()
         dialog.show(supportFragmentManager, "AddHabitFragment")
     }
-
-//    fun addHabit(view: View) {
-//        val newHabit = Habit(text = view.et_habit_name.text.toString())
-//        habitViewModel.addNewHabit(newHabit)
-//    }
-
 
 }

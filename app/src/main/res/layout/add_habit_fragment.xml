@@ -8,18 +8,18 @@
     tools:context=".ui.habits.AddHabitFragment">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
 
-        android:text="@string/habit_name"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/et_habit_name"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--        android:text="@string/habit_name"-->
+    <!--        android:textSize="20sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/guideline2"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/et_habit_name"-->
+    <!--        app:layout_constraintHorizontal_bias="0.6"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline3"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <EditText
         android:id="@+id/et_habit_name"
@@ -30,63 +30,65 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.55" />
-
-
-    <TextView
-        android:id="@+id/textViewType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/habit_type"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewRepeating"
-        app:layout_constraintEnd_toStartOf="@+id/tb_habit_type"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.90" />
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textViewType"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/habit_type"-->
+    <!--        android:textSize="20sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/textViewRepeating"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/tb_habit_type"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline3"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guideline2" />-->
 
     <ToggleButton
         android:id="@+id/tb_habit_type"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/habit_type_button"
-        android:textOn="@string/timer"
         android:textOff="@string/checkbox"
-        app:layout_constraintBottom_toTopOf="@+id/tb_habit_repeating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewType"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-
-    <TextView
-        android:id="@+id/textViewRepeating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/recurring"
-        android:textSize="20sp"
+        android:textOn="@string/timer"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tb_habit_type"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewType" />
+        app:layout_constraintEnd_toStartOf="@+id/tb_habit_repeating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_habit_name" />
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/textViewRepeating"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/recurring"-->
+    <!--        android:textSize="20sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/tb_habit_type"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline3"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textViewType" />-->
 
     <ToggleButton
         android:id="@+id/tb_habit_repeating"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/habit_type_button"
-        android:textOn="@string/yes"
-        android:textOff="@string/no"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textOff="@string/one_shot"
+        android:textOn="@string/repeatable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewType"
-        app:layout_constraintTop_toBottomOf="@+id/tb_habit_type" />
-
+        app:layout_constraintStart_toEndOf="@+id/tb_habit_type"
+        app:layout_constraintTop_toBottomOf="@+id/et_habit_name" />
 
 
     <androidx.constraintlayout.widget.Guideline

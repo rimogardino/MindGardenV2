@@ -29,5 +29,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="recurring">Recurring</string>
+    <string name="one_shot">one shot</string>
+    <string name="repeatable">repeatable</string>
+    <string name="background_image">background image</string>
 
 </resources>

@@ -1,21 +1,13 @@
 package com.example.mindgardenv2.ui.habits
 
-import android.app.Application
-import android.content.Context
-import android.content.res.Resources
 import android.text.Editable
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Spinner
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.example.mindgardenv2.R
 import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.databinding.HabitCheckboxBinding
 import com.example.mindgardenv2.databinding.HabitTimerBinding
@@ -94,22 +86,12 @@ class HabitAdapter(
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         val habit = getItem(position)
-                        if ( it!!.isNotEmpty() && it.single().digitToIntOrNull() != null ) {
+                        if (it!!.isNotEmpty() && it.single().digitToIntOrNull() != null) {
                             habit.time = it.single().digitToInt()
                             listenerTimer.onTimeChange(habit)
                         }
                     }
                 }
-
-//                spinnerTime.setOnItemClickListener { parent, view, position, id ->
-//                    //val position = adapterPosition
-//                    if (position != RecyclerView.NO_POSITION) {
-//                        val habit = getItem(position)
-//
-//                        listenerSpinner.onItemSpinnerSelected(habit, spinnerTime.selectedItemPosition)
-//                    }
-//
-//                }
             }
         }
 
@@ -117,12 +99,10 @@ class HabitAdapter(
             timerBinding.apply {
                 textView.text = habit.text
                 timerLength.text = Editable.Factory.getInstance().newEditable("${habit.time}")
-                //spinnerTime.setSelection(habit.time - 1)
 
                 if (habit.runningTime > 0) {
                     buttonStartPause.text = habit.runningTime.toString()
-                }
-                else {
+                } else {
                     buttonStartPause.text = "Start"//Resources.getSystem().getString(R.string.start)
                 }
             }

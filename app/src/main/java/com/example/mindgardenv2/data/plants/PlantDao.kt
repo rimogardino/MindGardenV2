@@ -2,7 +2,6 @@ package com.example.mindgardenv2.data.plants
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlantDao {

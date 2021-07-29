@@ -2,9 +2,7 @@ package com.example.mindgardenv2.ui.habits
 
 import android.os.CountDownTimer
 import android.util.Log
-import android.widget.Spinner
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.data.habits.HabitDao
@@ -15,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewModel() {
     val habits = habitDao.getAllHabits()
-    suspend fun synchronousHabits() = habitDao.getAllHabitsSynchronous()
+
+    //suspend fun synchronousHabits() = habitDao.getAllHabitsSynchronous()
     private var timer: CountDownTimer? = null
     private var habitWithATimer: Habit? = null
 
@@ -59,7 +58,7 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
             habitDao.updateHabit(habit)
         }
 
-        timer = object : CountDownTimer( habit.time * 60 * 1000L , 60L * 1000L ) {
+        timer = object : CountDownTimer(habit.time * 60 * 1000L, 60L * 1000L) {
 
             override fun onTick(millisUntilFinished: Long) {
                 Log.d(TAG, "running timer at millisUntilFinished $millisUntilFinished")
@@ -80,7 +79,6 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
             }
 
         }.start()
-
 
 
     }
