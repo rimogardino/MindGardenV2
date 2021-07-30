@@ -1,9 +1,12 @@
 package com.example.mindgardenv2.ui.habits
 
+import android.media.MediaPlayer
+import android.media.RingtoneManager
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mindgardenv2.MindGardenApplication
 import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.data.habits.HabitDao
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -72,7 +75,8 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
 
 
             override fun onTick(millisUntilFinished: Long) {
-                habit.runningTime = ((millisUntilFinished / (60 * milliWeight)) + 1).toString()//(habit.runningTime.toInt() - 1).toString()
+                habit.runningTime =
+                    ((millisUntilFinished / (60 * milliWeight)) + 1).toString()//(habit.runningTime.toInt() - 1).toString()
                 viewModelScope.launch {
                     habitDao.updateHabit(habit)
                 }
@@ -85,8 +89,18 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
                 viewModelScope.launch {
                     habitDao.updateHabit(habit)
                 }
+                //Make a notification sound
+                val notificationSound = RingtoneManager.getDefaultUri(
+                    RingtoneManager.TYPE_NOTIFICATION
+                )
 
-                //this should probably also make a noise
+                val mediaPlayer = MediaPlayer.create(
+                    MindGardenApplication.applicationContext(),
+                    notificationSound
+                )
+                mediaPlayer.start() // no need to call prepare(); create() does that for you
+
+
             }
 
         }.start()

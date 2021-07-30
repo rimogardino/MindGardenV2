@@ -86,8 +86,8 @@ class HabitAdapter(
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         val habit = getItem(position)
-                        if (it!!.isNotEmpty() && it.single().digitToIntOrNull() != null) {
-                            habit.time = it.single().digitToInt()
+                        if (it!!.isNotEmpty()) {
+                            habit.time = it.last().digitToInt()
                             listenerTimer.onTimeChange(habit)
                         }
                     }

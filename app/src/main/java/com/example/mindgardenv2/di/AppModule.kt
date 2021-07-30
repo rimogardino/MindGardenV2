@@ -3,6 +3,7 @@ package com.example.mindgardenv2.di
 import android.app.Application
 import android.util.Log
 import androidx.room.Room
+import com.example.mindgardenv2.MindGardenApplication
 import com.example.mindgardenv2.data.CombinedDataBase
 import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.data.habits.HabitDao
@@ -52,6 +53,8 @@ object AppModule {
     @Singleton
     fun provideApplicationScope() = CoroutineScope(SupervisorJob())
 
+    @Provides
+    fun provideMindGardenApplication() = MindGardenApplication()
 
 }
 

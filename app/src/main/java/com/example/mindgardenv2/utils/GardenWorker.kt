@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
+import com.example.mindgardenv2.MindGardenApplication
 import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.data.habits.HabitDao
 import com.example.mindgardenv2.data.plants.Plant
@@ -87,7 +88,7 @@ class GardenWorker @Inject constructor(
         )
 
         habitDao.insertHabit(Habit(text = "Do nothing", repeating = false))
-        habitDao.insertHabit(Habit(text = "swipe me", repeating = false))
+        habitDao.insertHabit(Habit(text = "Swipe me", repeating = false))
         habitDao.insertHabit(
             Habit(
                 text = "Think about why would a grown" +

@@ -52,7 +52,7 @@ abstract class CombinedDataBase : RoomDatabase() {
                 )
 
                 habitDao.insertHabit(Habit(text = "Do nothing", repeating = false))
-                habitDao.insertHabit(Habit(text = "swipe me", repeating = false))
+                habitDao.insertHabit(Habit(text = "Swipe me", repeating = false))
                 habitDao.insertHabit(
                     Habit(
                         text = "Think about why would a grown" +

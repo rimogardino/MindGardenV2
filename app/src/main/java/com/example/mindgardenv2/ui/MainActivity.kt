@@ -20,4 +20,5 @@ class MainActivity : AppCompatActivity() {
         dialog.show(supportFragmentManager, "AddHabitFragment")
     }
 
+
 }
