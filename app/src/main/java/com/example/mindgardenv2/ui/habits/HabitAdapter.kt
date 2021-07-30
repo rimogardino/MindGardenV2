@@ -1,8 +1,8 @@
 package com.example.mindgardenv2.ui.habits
 
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -77,8 +77,8 @@ class HabitAdapter(
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
                         val habit = getItem(position)
-                        it.button_start_pause.text = habit.time.toString()
                         listenerTimer.onButtonClick(habit)
+                        it.button_start_pause.text = habit.runningTime
                     }
                 }
 
@@ -98,13 +98,13 @@ class HabitAdapter(
         override fun bind(habit: Habit) {
             timerBinding.apply {
                 textView.text = habit.text
-                timerLength.text = Editable.Factory.getInstance().newEditable("${habit.time}")
+                timerLength.setText(
+                    habit.time.toString(),
+                    TextView.BufferType.EDITABLE
+                )
 
-                if (habit.runningTime > 0) {
-                    buttonStartPause.text = habit.runningTime.toString()
-                } else {
-                    buttonStartPause.text = "Start"//Resources.getSystem().getString(R.string.start)
-                }
+                buttonStartPause.text = habit.runningTime
+
             }
         }
 

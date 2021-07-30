@@ -46,6 +46,7 @@ class HabitRecyclerViewFragment :
                     val habit = habitAdapter.currentList[viewHolder.adapterPosition]
                     habitViewModel.onHabitSwiped(habit)
                 }
+
             }).attachToRecyclerView(rvHabits)
         }
 

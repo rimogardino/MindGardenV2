@@ -1,11 +1,14 @@
 package com.example.mindgardenv2.di
 
 import android.app.Application
+import android.util.Log
 import androidx.room.Room
 import com.example.mindgardenv2.data.CombinedDataBase
+import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.data.habits.HabitDao
 import com.example.mindgardenv2.data.plants.PlantDao
 import com.example.mindgardenv2.data.session.SessionDao
+import com.example.mindgardenv2.ui.habits.HabitRecyclerViewFragment
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,10 +27,16 @@ object AppModule {
     fun provideDataBase(
         app : Application,
         initCallBack: CombinedDataBase.InitCallBack
-    ) = Room.databaseBuilder(app, CombinedDataBase::class.java,"main_db")
-            .fallbackToDestructiveMigration()
+    ): CombinedDataBase {
+        val db = Room.databaseBuilder(app, CombinedDataBase::class.java, "main_db")
+            .allowMainThreadQueries()
             .addCallback(initCallBack)
+            .fallbackToDestructiveMigration()
             .build()
+
+        return db
+    }
+
 
     @Provides
     fun providePlantDao(db: CombinedDataBase) : PlantDao = db.plantDao()

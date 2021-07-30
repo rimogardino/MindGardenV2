@@ -4,13 +4,16 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
+import com.example.mindgardenv2.data.habits.Habit
 import com.example.mindgardenv2.data.habits.HabitDao
 import com.example.mindgardenv2.data.plants.Plant
 import com.example.mindgardenv2.data.plants.PlantDao
 import com.example.mindgardenv2.data.session.Session
 import com.example.mindgardenv2.data.session.SessionDao
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
@@ -33,6 +36,8 @@ class GardenWorker @Inject constructor(
         var isNewSession = true
 
         viewModelScope.launch {
+            if (sessionDao.getAllSessions().isEmpty()) initDB()
+
             val latestSessions = sessionDao.getLatestSession()
 
             for (sesh in latestSessions) {
@@ -62,6 +67,36 @@ class GardenWorker @Inject constructor(
 
 
     }
+
+/**
+    Does whatever the InitCallBack does from CombinedDataBase.kt, but actually works on my phone,
+    InitCallBack works in the VM though...
+ */
+    private suspend fun initDB() {
+        plantDao.insertPlant(
+            Plant(
+                x = 100, y = 300,
+                scale = 1f, lifeStage = Plant.pLifeStageStart
+            )
+        )
+        plantDao.insertPlant(
+            Plant(
+                x = 600, y = 400,
+                scale = 1f, lifeStage = Plant.pLifeStageGrown
+            )
+        )
+
+        habitDao.insertHabit(Habit(text = "Do nothing", repeating = false))
+        habitDao.insertHabit(Habit(text = "swipe me", repeating = false))
+        habitDao.insertHabit(
+            Habit(
+                text = "Think about why would a grown" +
+                        " ass man make an app with flowers?!?",
+                type = Habit.typeTimer
+            )
+        )
+    }
+
 
     private fun waterTheGarden() {
         Log.d(TAG, "waterTheGarden")
@@ -101,6 +136,8 @@ class GardenWorker @Inject constructor(
         Log.d(TAG, "degrade plant")
 
         val allPlants = plantDao.getAllPlantsSynchronous()
+        if (allPlants.isEmpty()) return
+
         val chosenPlant = allPlants[(0.until(allPlants.size)).random()]
         val degradedHealth = chosenPlant.health - 1
         chosenPlant.health = degradedHealth
@@ -117,6 +154,10 @@ class GardenWorker @Inject constructor(
 
     private suspend fun isStreak(): Int {
         val prevSession = sessionDao.getPreviousSession()
+        // Not false when initially installing, not sure why
+        if (prevSession == null) {
+            return 0
+        }
         val prevDate = prevSession.date
         val currentDate = currentSession.date
 

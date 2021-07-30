@@ -42,27 +42,37 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
     fun startTimer(habit: Habit) {
         // Maybe updating a value in the database is not the best approach to keep track of the time
         // takes a whole minute to update the first time
-        Log.d(TAG, "starting timer for $habit")
-        if (timer != null) timer?.cancel()
+        Log.d(TAG, "starting timer for $habitWithATimer $habit")
+
         // If a different habit had a running timer reset it's values
-        if (habitWithATimer != null && habitWithATimer?.habitID != habit.habitID) {
-            habitWithATimer?.runningTime = 0
+        //if (habitWithATimer != null && habitWithATimer?.habitID != habit.habitID) {
+        // If a timer was already running just cancel everything
+        if (habitWithATimer != null && timer != null) {
+            habitWithATimer?.runningTime = "Start"
+            habit.runningTime = "Start"
+            Log.d(TAG, "canceling timer for $habit")
+            timer?.cancel()
             viewModelScope.launch {
                 habitDao.updateHabit(habitWithATimer!!)
+                habitDao.updateHabit(habit)
             }
+            habitWithATimer = null
+            return
         }
 
 
-        habit.runningTime = habit.time + 1
+        habit.runningTime = habit.time.toString()
+        habitWithATimer = habit
         viewModelScope.launch {
             habitDao.updateHabit(habit)
         }
 
-        timer = object : CountDownTimer(habit.time * 60 * 1000L, 60L * 1000L) {
+        val milliWeight = 1000L
+        timer = object : CountDownTimer(habit.time * 60 * milliWeight, 60 * milliWeight) {
+
 
             override fun onTick(millisUntilFinished: Long) {
-                Log.d(TAG, "running timer at millisUntilFinished $millisUntilFinished")
-                habit.runningTime -= 1
+                habit.runningTime = ((millisUntilFinished / (60 * milliWeight)) + 1).toString()//(habit.runningTime.toInt() - 1).toString()
                 viewModelScope.launch {
                     habitDao.updateHabit(habit)
                 }
@@ -70,7 +80,8 @@ class HabitViewModel @Inject constructor(private val habitDao: HabitDao) : ViewM
 
             override fun onFinish() {
                 habit.checked = true
-                habit.runningTime = 0
+                habit.runningTime = "Start"
+                habitWithATimer = null
                 viewModelScope.launch {
                     habitDao.updateHabit(habit)
                 }

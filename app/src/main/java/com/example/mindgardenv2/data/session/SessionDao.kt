@@ -22,10 +22,10 @@ interface SessionDao {
 
     //This should return just one session, but idk if I can guarantee it will
     // why is TRUE red ?!?!? o_O
-    @Query("SELECT * FROM session_table WHERE latestSession = TRUE")
+    @Query("SELECT * FROM session_table WHERE latestSession = 1")
     suspend fun getLatestSession(): List<Session>
 
     //SELECT * FROM session_table WHERE latestSession <> TRUE ORDER BY date ASC LIMIT 1
-    @Query("SELECT * FROM session_table WHERE latestSession <> TRUE ORDER BY date DESC LIMIT 1")
+    @Query("SELECT * FROM session_table WHERE latestSession = 0 ORDER BY date DESC LIMIT 1")
     suspend fun getPreviousSession(): Session
 }
